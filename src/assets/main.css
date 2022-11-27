@@ -1,0 +1,26 @@
+/*noinspection CssUnknownTarget*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+#app {
+    min-height: calc(100vh - 72px);
+}
+
+body {
+    margin: 0;
+    background: #232832;
+    padding-top: 72px;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+a {
+    color: #000000;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+}
