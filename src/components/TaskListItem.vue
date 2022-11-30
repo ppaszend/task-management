@@ -17,7 +17,16 @@
       </router-link>
       <tap-bar
         :buttons="[
-          { label: 'Edit', onClick: () => {} },
+          {
+            label: 'Edit',
+            onClick: () => {
+              $router.push({
+                name: 'task-details',
+                params: { id: task.id },
+                hash: '#edit',
+              });
+            },
+          },
           { label: 'Remove', onClick: () => {} },
         ]"
       />

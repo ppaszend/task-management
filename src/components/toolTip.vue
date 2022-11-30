@@ -1,6 +1,10 @@
 <template>
   <div class="tool-tip-wrapper">
-    <div @mouseenter="hovered = true" @mouseleave="hovered = false">
+    <div
+      @mouseenter="mouseEnterHandler"
+      @mouseleave="mouseLeaveHandler"
+      @click="clickHandler"
+    >
       <slot />
     </div>
 
@@ -16,10 +20,33 @@ import FadeTransition from "@/transitions/fadeTransition.vue";
 
 interface Props {
   label: String;
+  timeToShow?: number;
+  closeAfterClick?: boolean;
 }
 
 const props = defineProps<Props>();
 const hovered = ref<Boolean>(false);
+const mouseOverElement = ref<Boolean>(false);
+
+const mouseEnterHandler = () => {
+  mouseOverElement.value = true;
+  setTimeout(() => {
+    if (mouseOverElement.value) {
+      hovered.value = true;
+    }
+  }, props.timeToShow || 300);
+};
+
+const mouseLeaveHandler = () => {
+  mouseOverElement.value = false;
+  hovered.value = false;
+};
+
+const clickHandler = () => {
+  if (props.closeAfterClick) {
+    hovered.value = false;
+  }
+};
 </script>
 <script lang="ts">
 export default {
@@ -34,6 +61,7 @@ export default {
 
 .tool-tip {
   background: transparentize(#000000, 0.08);
+  color: #ffffff;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

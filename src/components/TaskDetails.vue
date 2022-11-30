@@ -144,6 +144,7 @@ import { ref, watch } from "vue";
 import SmallButton from "@/components/buttons/smallButton.vue";
 import ToolTip from "@/components/toolTip.vue";
 import CommentsComponent from "@/components/commentsComponent.vue";
+import { useRoute } from "vue-router";
 
 interface Props {
   id: string | number;
@@ -154,11 +155,16 @@ const prioritiesStore: PrioritiesInterface = usePrioritiesStore();
 const usersStore: UsersInterface = useUsersStore();
 const projectsStore: ProjectsStoreInterface = useProjectsStore();
 const props = defineProps<Props>();
+const route = useRoute();
 
 const task = tasksStore.getTaskById(
   typeof props.id === "string" ? parseInt(props.id) : props.id
 );
-const editMode = ref<Boolean>(false);
+const editMode = ref<Boolean>(route.hash === "#edit");
+if (route.hash === "#edit") {
+  window.location.hash = "";
+}
+
 const discardChangesConfirmation = ref<Boolean>(false);
 const changesSaved = ref<Boolean>(false);
 const removeTaskConfirmation = ref<Boolean>(false);

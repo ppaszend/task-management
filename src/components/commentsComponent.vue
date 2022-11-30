@@ -7,11 +7,7 @@
         <div class="comment-text" contenteditable="true"></div>
         <button class="comment-button">Save</button>
       </div>
-      <div
-        class="comment-item"
-        v-for="comment in commentsComponent"
-        :key="comment.id"
-      >
+      <div class="comment-item" v-for="comment in comments" :key="comment.id">
         <div class="comment-properties">
           <div>Added: <b>Yesterday</b></div>
           <div>
@@ -48,7 +44,7 @@ const comments = ref([
 </script>
 <script lang="ts">
 export default {
-  name: "commentsComponent",
+  name: "CommentsComponent",
 };
 </script>
 

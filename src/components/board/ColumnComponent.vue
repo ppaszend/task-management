@@ -1,6 +1,21 @@
 <template>
-  <div class="column" :class="{ empty: tasks.length === 0 }">
-    <div class="column-name">{{ props.column.name }} ({{ tasks.length }})</div>
+  <div class="column" :class="{ empty: tasks.length === 0, expanded }">
+    <tool-tip
+      :time-to-show="1000"
+      :label="expanded ? 'Click to minimize' : 'Click to expand'"
+      :close-after-click="true"
+    >
+      <div class="column-name" @click="expanded = !expanded">
+        {{ props.column.name }} ({{ tasks.length }})
+        <div class="column-name-icon">
+          <font-awesome-icon icon="fa-solid fa-chevron-left" v-if="expanded" />
+          <font-awesome-icon
+            icon="fa-solid fa-chevron-right"
+            v-if="!expanded"
+          />
+        </div>
+      </div>
+    </tool-tip>
     <div
       class="column-content"
       @drop="(event) => columnOnDropHandler(event, column.id)"
@@ -9,6 +24,7 @@
     >
       <task-list-item
         class="task-list-item"
+        v-show="expanded"
         v-for="task in tasks"
         :key="task.id"
         :task="task"
@@ -17,6 +33,12 @@
         @dragstart="(event) => onDragStartHandler(event, task.id)"
         @click="(event) => clickHandler(event, task)"
         @dblclick="() => dblClickHandler(task)"
+      />
+      <div
+        class="square"
+        v-show="!expanded"
+        v-for="task in tasks"
+        :key="task.id"
       />
     </div>
   </div>
@@ -30,7 +52,8 @@ import type { TasksInterface } from "@/stores/tasks";
 import { useTasksStore } from "@/stores/tasks";
 import TaskListItem from "@/components/TaskListItem.vue";
 import { TaskModalInterface, useTaskModalStore } from "@/stores/taskModal";
-import { computed } from "vue";
+import { computed, ref } from "vue";
+import ToolTip from "@/components/toolTip.vue";
 
 interface Props {
   column: Column;
@@ -44,6 +67,7 @@ const taskModal: TaskModalInterface = useTaskModalStore();
 const tasks = computed((): Task[] =>
   tasksStore.getTasksWithStage(props.column.id)
 );
+const expanded = ref<Boolean>(true);
 
 const emit = defineEmits([
   "removeFromSelection",
@@ -95,20 +119,32 @@ export default {
 .column {
   display: flex;
   flex-direction: column;
-  width: 100%;
   min-height: calc(100% - 48px);
 
-  &:not(.empty) {
-    min-width: 420px;
+  &.expanded {
+    width: 100%;
+
+    &:not(.empty) {
+      min-width: 420px;
+    }
   }
 
   .column-name {
+    display: flex;
+    align-items: center;
     font-weight: 500;
     font-size: 0.95em;
     padding: 6px 12px;
     background: rgba(255, 255, 255, 0.2);
     color: #ffffff;
     white-space: nowrap;
+    cursor: pointer;
+
+    .column-name-icon {
+      margin-left: auto;
+      padding-left: 6px;
+      font-size: 12px;
+    }
   }
 
   .column-content {
@@ -120,6 +156,12 @@ export default {
 
     .task-list-item {
       cursor: pointer;
+    }
+
+    .square {
+      width: 10px;
+      height: 10px;
+      background: #323741;
     }
   }
 }

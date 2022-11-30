@@ -11,12 +11,20 @@ import {
   faUserSecret,
   faEllipsisVertical,
   faChevronDown,
+  faChevronLeft,
+  faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 const pinia = createPinia();
 const app = createApp(App);
 
-library.add(faUserSecret, faEllipsisVertical, faChevronDown);
+library.add(
+  faUserSecret,
+  faEllipsisVertical,
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight
+);
 
 app.use(router);
 app.use(pinia);
