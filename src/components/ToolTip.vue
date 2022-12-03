@@ -50,7 +50,7 @@ const clickHandler = () => {
 </script>
 <script lang="ts">
 export default {
-  name: "toolTip",
+  name: "ToolTip",
 };
 </script>
 

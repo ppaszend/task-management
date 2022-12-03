@@ -1,5 +1,9 @@
 <template>
-  <div class="column" :class="{ empty: tasks.length === 0, expanded }">
+  <div
+    class="column"
+    :class="{ empty: tasks.length === 0, expanded }"
+    ref="columnElement"
+  >
     <tool-tip
       :time-to-show="1000"
       :label="expanded ? 'Click to minimize' : 'Click to expand'"
@@ -16,30 +20,29 @@
         </div>
       </div>
     </tool-tip>
-    <div
-      class="column-content"
-      @drop="(event) => columnOnDropHandler(event, column.id)"
-      @dragover.prevent
-      @dragenter.prevent
-    >
-      <task-list-item
-        class="task-list-item"
-        v-show="expanded"
-        v-for="task in tasks"
-        :key="task.id"
-        :task="task"
-        :modal-allowed="true"
-        draggable="true"
-        @dragstart="(event) => onDragStartHandler(event, task.id)"
-        @click="(event) => clickHandler(event, task)"
-        @dblclick="() => dblClickHandler(task)"
-      />
+    <div class="column-content" :class="{ minimized: !expanded }">
       <div
-        class="square"
-        v-show="!expanded"
-        v-for="task in tasks"
-        :key="task.id"
-      />
+        class="task-drag-placeholder"
+        :style="{ height: `${boardStore.dragHeight}px` }"
+        v-if="boardStore.dragged && draggedOver"
+      ></div>
+
+      <div class="column-content-tasks" v-if="expanded">
+        <draggable-item v-for="task in tasks" :key="task.id" :id="task.id">
+          <task-list-item
+            class="task-list-item"
+            v-if="expanded"
+            :task="task"
+            :modal-allowed="true"
+            @click="(event) => clickHandler(event, task)"
+            @dblclick="() => dblClickHandler(task)"
+          />
+        </draggable-item>
+      </div>
+
+      <div class="column-content-squares" v-if="!expanded">
+        <div class="square" v-for="task in tasks" :key="task.id" />
+      </div>
     </div>
   </div>
 </template>
@@ -52,8 +55,9 @@ import type { TasksInterface } from "@/stores/tasks";
 import { useTasksStore } from "@/stores/tasks";
 import TaskListItem from "@/components/TaskListItem.vue";
 import { TaskModalInterface, useTaskModalStore } from "@/stores/taskModal";
-import { computed, ref } from "vue";
-import ToolTip from "@/components/toolTip.vue";
+import { computed, ref, watch, watchEffect } from "vue";
+import ToolTip from "@/components/ToolTip.vue";
+import DraggableItem from "@/components/DraggableItem.vue";
 
 interface Props {
   column: Column;
@@ -68,30 +72,48 @@ const tasks = computed((): Task[] =>
   tasksStore.getTasksWithStage(props.column.id)
 );
 const expanded = ref<Boolean>(true);
+const draggedOver = ref<boolean>(false);
+const columnElement = ref<HTMLElement | null>(null);
+
+watchEffect(() => {
+  if (columnElement.value) {
+    const columnBoundingRect = columnElement.value.getBoundingClientRect();
+    draggedOver.value =
+      boardStore.dragPositionX > columnBoundingRect.x &&
+      boardStore.dragPositionX <
+        columnBoundingRect.x + columnBoundingRect.width &&
+      boardStore.dragPositionY > columnBoundingRect.y &&
+      boardStore.dragPositionY <
+        columnBoundingRect.y + columnBoundingRect.height;
+
+    if (draggedOver.value) {
+      boardStore.draggedOverColumn = props.column.id;
+    } else if (boardStore.draggedOverColumn === props.column.id) {
+      boardStore.draggedOverColumn = null;
+    }
+  }
+});
+
+watch(
+  () => boardStore.dragged,
+  (value, oldValue) => {
+    if (!value && oldValue) {
+      const draggedTask = tasksStore.tasks.find(
+        ({ id }) => id === boardStore.draggedTaskId
+      );
+
+      if (draggedTask && typeof boardStore.draggedOverColumn === "number") {
+        draggedTask.stage = boardStore.draggedOverColumn;
+      }
+    }
+  }
+);
 
 const emit = defineEmits([
   "removeFromSelection",
   "addToSelection",
   "selectOne",
 ]);
-
-const columnOnDropHandler = (event: DragEvent, columnId: number) => {
-  if (event.dataTransfer) {
-    const taskId = parseInt(event.dataTransfer?.getData("taskId"));
-    const task = tasksStore.tasks.find(({ id }: Task) => id === taskId);
-    if (task) {
-      task.stage = columnId;
-    }
-  }
-};
-
-const onDragStartHandler = (event: DragEvent, id: number) => {
-  if (event.dataTransfer) {
-    event.dataTransfer.dropEffect = "move";
-    event.dataTransfer.effectAllowed = "move";
-    event.dataTransfer.setData("taskId", id.toString());
-  }
-};
 
 const clickHandler = (event: MouseEvent, task: Task) => {
   if (event.shiftKey) {
@@ -154,8 +176,28 @@ export default {
     height: 100%;
     gap: 10px;
 
+    .column-content-tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .column-content-squares {
+      display: flex;
+      gap: 4px;
+      width: 100%;
+    }
+
     .task-list-item {
       cursor: pointer;
+    }
+
+    .task-drag-placeholder {
+      display: flex;
+      width: 100%;
+      border: 1px dashed #ffffff;
+      border-radius: 4px;
     }
 
     .square {

@@ -133,7 +133,7 @@
 <script lang="ts" setup>
 import type { TasksInterface } from "@/stores/tasks";
 import { useTasksStore } from "@/stores/tasks";
-import SelectInput from "@/components/form/selectInput.vue";
+import SelectInput from "@/components/form/SelectInput.vue";
 import type { PrioritiesInterface } from "@/stores/priorities";
 import { usePrioritiesStore } from "@/stores/priorities";
 import type { UsersInterface } from "@/stores/users";
@@ -141,9 +141,9 @@ import { useUsersStore } from "@/stores/users";
 import type { ProjectsStoreInterface } from "@/stores/projects";
 import { useProjectsStore } from "@/stores/projects";
 import { ref, watch } from "vue";
-import SmallButton from "@/components/buttons/smallButton.vue";
-import ToolTip from "@/components/toolTip.vue";
-import CommentsComponent from "@/components/commentsComponent.vue";
+import SmallButton from "@/components/buttons/SmallButton.vue";
+import ToolTip from "@/components/ToolTip.vue";
+import CommentsComponent from "@/components/CommentsComponent.vue";
 import { useRoute } from "vue-router";
 
 interface Props {

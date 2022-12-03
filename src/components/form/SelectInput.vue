@@ -69,7 +69,7 @@ const getSelectedOptionName = () => {
 </script>
 <script lang="ts">
 export default {
-  name: "selectInput",
+  name: "SelectInput",
 };
 </script>
 

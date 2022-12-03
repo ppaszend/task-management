@@ -10,9 +10,29 @@ export interface BoardStore {
   selectOne: Function;
   addToSelection: Function;
   unSelectOne: Function;
+  dragged: boolean;
+  dragPositionX: number;
+  dragPositionY: number;
+  dragWidth: number;
+  dragHeight: number;
+  draggedOverColumn: number | null;
+  draggedTaskId: number | null;
 }
 
 export const useBoardStore = defineStore("board", () => {
+  const dragged = ref<boolean>(false);
+  const dragPositionX = ref<number>(0);
+  const dragPositionY = ref<number>(0);
+  const dragWidth = ref<number>(0);
+  const dragHeight = ref<number>(0);
+  const draggedOverColumn = ref<number | null>(null);
+  const draggedTaskId = ref<number | null>(null);
+
+  document.body.addEventListener("mousemove", (event) => {
+    dragPositionX.value = event.x;
+    dragPositionY.value = event.y;
+  });
+
   const columns = ref<Column[]>([
     {
       id: 0,
@@ -73,5 +93,12 @@ export const useBoardStore = defineStore("board", () => {
     selectOne,
     addToSelection,
     unSelectOne,
+    dragged,
+    dragPositionX,
+    dragPositionY,
+    dragWidth,
+    dragHeight,
+    draggedOverColumn,
+    draggedTaskId,
   };
 });

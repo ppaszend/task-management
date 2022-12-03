@@ -38,7 +38,7 @@ const props = defineProps<Props>();
 </script>
 <script lang="ts">
 export default {
-  name: "tapBar",
+  name: "TapBar",
 };
 </script>
 

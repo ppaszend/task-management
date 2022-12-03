@@ -16,7 +16,7 @@ const props = defineProps<Props>();
 </script>
 <script lang="ts">
 export default {
-  name: "smallButton",
+  name: "SmallButton",
 };
 </script>
 
