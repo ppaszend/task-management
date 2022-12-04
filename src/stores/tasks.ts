@@ -22,12 +22,14 @@ export const useTasksStore = defineStore("tasks", () => {
     stage,
     priority,
     assignee,
+    project,
   }: {
     name: Task["name"];
     description: Task["description"];
     stage: Task["stage"];
     priority: Task["priority"];
     assignee: Task["assignee"];
+    project: Task["project"];
   }): Task => {
     const task = {
       id: Math.max(...tasks.value.map(({ id }) => id)) + 1,
@@ -36,6 +38,7 @@ export const useTasksStore = defineStore("tasks", () => {
       stage,
       priority,
       assignee,
+      project,
     };
     tasks.value.push(task);
     return task;

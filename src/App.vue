@@ -29,10 +29,8 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 import ToastNotificationsComponent from "@/components/ToastNotificationsComponent.vue";
-import {
-  useLoggedUserStore,
-  LoggedUserStoreInterface,
-} from "@/stores/loggedUser";
+import { useLoggedUserStore } from "@/stores/loggedUser";
+import type { LoggedUserStoreInterface } from "@/stores/loggedUser";
 
 const loggedUserStore: LoggedUserStoreInterface = useLoggedUserStore();
 </script>

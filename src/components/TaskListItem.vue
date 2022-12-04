@@ -1,13 +1,5 @@
 <template>
-  <div
-    class="task"
-    @dblclick="
-      () => {
-        modalAllowed === true;
-        this.taskModalActive = true;
-      }
-    "
-  >
+  <div class="task" @dblclick="dblClickHandler">
     <div class="task-header">
       <router-link
         :to="{ name: 'task-details', params: { id: task.id } }"
@@ -114,6 +106,10 @@ const tasksStore: TasksInterface = useTasksStore();
 
 const task = tasksStore.getTaskById(props.task.id);
 const taskModalActive = ref<Boolean>(false);
+
+const dblClickHandler = () => {
+  taskModalActive.value = true;
+};
 </script>
 <script lang="ts">
 export default {

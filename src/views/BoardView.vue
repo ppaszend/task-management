@@ -9,7 +9,8 @@
 </template>
 
 <script lang="ts" setup>
-import { BoardStore, useBoardStore } from "@/stores/board";
+import { useBoardStore } from "@/stores/board";
+import type { BoardStore } from "@/stores/board";
 import ColumnComponent from "@/components/board/ColumnComponent.vue";
 
 const boardStore: BoardStore = useBoardStore();

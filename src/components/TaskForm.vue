@@ -43,7 +43,8 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { UsersInterface, useUsersStore } from "@/stores/users";
+import { useUsersStore } from "@/stores/users";
+import type { UsersInterface } from "@/stores/users";
 import type { PrioritiesInterface } from "@/stores/priorities";
 import { usePrioritiesStore } from "@/stores/priorities";
 

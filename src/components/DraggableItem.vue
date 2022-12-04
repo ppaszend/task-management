@@ -3,7 +3,6 @@
     ref="draggableElement"
     @mousedown="mouseDownHandler"
     @mouseup="mouseUpHandler"
-    @click="clickHandler"
     :style="{
       left: drag ? `${elementPositionX}px` : 'auto',
       top: drag ? `${elementPositionY}px` : 'auto',
@@ -17,7 +16,8 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { BoardStore, useBoardStore } from "@/stores/board";
+import { useBoardStore } from "@/stores/board";
+import type { BoardStore } from "@/stores/board";
 import type { Task } from "@/models/Task";
 
 interface Props {

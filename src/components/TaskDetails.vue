@@ -160,7 +160,7 @@ const route = useRoute();
 const task = tasksStore.getTaskById(
   typeof props.id === "string" ? parseInt(props.id) : props.id
 );
-const editMode = ref<Boolean>(route.hash === "#edit");
+const editMode = ref<boolean>(route.hash === "#edit");
 if (route.hash === "#edit") {
   window.location.hash = "";
 }

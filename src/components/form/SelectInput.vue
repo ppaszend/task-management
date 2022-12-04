@@ -12,8 +12,8 @@
     <div class="options" v-show="active">
       <div
         class="option"
-        v-for="option in props.options"
-        :key="option.value"
+        v-for="(option, index) in props.options"
+        :key="index"
         @click="() => handleChange(option)"
       >
         {{ option.name }}

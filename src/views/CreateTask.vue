@@ -11,7 +11,8 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useToastNotificationsStore } from "@/stores/toastNotifications";
 import type { Task } from "@/models/Task";
-import { useTasksStore, TasksInterface } from "@/stores/tasks";
+import { useTasksStore } from "@/stores/tasks";
+import type { TasksInterface } from "@/stores/tasks";
 import TaskForm from "@/components/TaskForm.vue";
 
 const tasksStore: TasksInterface = useTasksStore();

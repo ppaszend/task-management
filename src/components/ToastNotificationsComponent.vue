@@ -11,11 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  ToastNotifications,
-  useToastNotificationsStore,
-} from "@/stores/toastNotifications";
-
+import { useToastNotificationsStore } from "@/stores/toastNotifications";
+import type { ToastNotifications } from "@/stores/toastNotifications";
 const toastNotificationsStore: ToastNotifications =
   useToastNotificationsStore();
 </script>

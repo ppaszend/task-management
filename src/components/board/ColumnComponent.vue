@@ -48,13 +48,15 @@
 </template>
 
 <script lang="ts" setup>
-import { BoardStore, useBoardStore } from "@/stores/board";
+import { useBoardStore } from "@/stores/board";
+import type { BoardStore } from "@/stores/board";
 import type { Task } from "@/models/Task";
 import type { Column } from "@/models/Column";
 import type { TasksInterface } from "@/stores/tasks";
 import { useTasksStore } from "@/stores/tasks";
 import TaskListItem from "@/components/TaskListItem.vue";
-import { TaskModalInterface, useTaskModalStore } from "@/stores/taskModal";
+import { useTaskModalStore } from "@/stores/taskModal";
+import type { TaskModalInterface } from "@/stores/taskModal";
 import { computed, ref, watch, watchEffect } from "vue";
 import ToolTip from "@/components/ToolTip.vue";
 import DraggableItem from "@/components/DraggableItem.vue";

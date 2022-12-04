@@ -10,7 +10,8 @@
 </template>
 
 <script lang="ts" setup>
-import { TasksInterface, useTasksStore } from "@/stores/tasks";
+import { useTasksStore } from "@/stores/tasks";
+import type { TasksInterface } from "@/stores/tasks";
 import TaskListItem from "@/components/TaskListItem.vue";
 
 const tasksStore: TasksInterface = useTasksStore();
