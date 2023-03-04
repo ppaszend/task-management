@@ -2,7 +2,7 @@ import type { User } from "@/models/User";
 import type { Priority } from "@/models/Priority";
 
 export interface Task {
-  id: number;
+  _id: number;
   name: string;
   description: string;
   stage: number;

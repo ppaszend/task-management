@@ -2,7 +2,7 @@
   <div class="task" @dblclick="dblClickHandler">
     <div class="task-header">
       <router-link
-        :to="{ name: 'task-details', params: { id: task.id } }"
+        :to="{ name: 'task-details', params: { id: $props.task.slug } }"
         class="task-name"
       >
         {{ task.name }}
@@ -33,8 +33,8 @@
               value: priority.id,
             }))
           "
-          :value="prioritiesStore.getPriorityById(task.priority).id"
-          @change="(value) => (task.priority = value)"
+          :value="prioritiesStore.getPriorityById($props.task.priority).id"
+          @change="(value) => ($props.task.priority = value)"
         />
       </div>
       <div class="task-property">

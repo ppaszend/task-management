@@ -3,6 +3,7 @@ import BoardView from "@/views/BoardView.vue";
 import CreateTask from "@/views/CreateTask.vue";
 import TasksListView from "@/views/TasksListView.vue";
 import TaskDetails from "@/views/TaskDetailsView.vue";
+import LoginView from "@/views/LoginView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,6 +12,11 @@ const router = createRouter({
       path: "/",
       name: "tasks-list",
       component: TasksListView,
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: LoginView,
     },
     {
       path: "/task/new",

@@ -3,8 +3,9 @@
     <div class="task-main">
       <div class="task-informations">
         <div>
-          Id: {{ projectsStore.getProjectById(task.project).shortName }}-{{
-            task.id
+          Id:
+          {{ projectsStore.getProjectById($props.task.project).shortName }}-{{
+            $props.task.id
           }}
         </div>
         <tool-tip label="02/03/2023 20:23">Created: Yesterday</tool-tip>
@@ -71,7 +72,7 @@
           :class="{ editable: editMode }"
           :contenteditable="editMode"
         >
-          {{ task.name }}
+          {{ $props.task.name }}
         </div>
       </div>
       <div
@@ -79,7 +80,7 @@
         :class="{ editable: editMode }"
         :contenteditable="editMode"
       >
-        {{ task.description }}
+        {{ $props.task.description }}
       </div>
       <comments-component />
     </div>
@@ -95,8 +96,8 @@
                 value: priority.id,
               }))
             "
-            :value="prioritiesStore.getPriorityById(task.priority).id"
-            @change="(value) => (task.priority = value)"
+            :value="prioritiesStore.getPriorityById($props.task.priority).id"
+            @change="(value) => ($props.task.priority = value)"
           />
         </div>
         <div class="task-property">
@@ -108,8 +109,8 @@
                 value: user.id,
               }))
             "
-            :value="usersStore.getUserById(task.assignee).id"
-            @change="(value) => (task.assignee = value)"
+            :value="usersStore.getUserById($props.task.assignee).id"
+            @change="(value) => ($props.task.assignee = value)"
           />
         </div>
         <div class="task-property">
@@ -121,8 +122,8 @@
                 value: project.id,
               }))
             "
-            :value="projectsStore.getProjectById(task.project).id"
-            @change="(value) => (task.project = value)"
+            :value="projectsStore.getProjectById($props.task.project).id"
+            @change="(value) => ($props.task.project = value)"
           />
         </div>
       </div>
@@ -131,8 +132,6 @@
 </template>
 
 <script lang="ts" setup>
-import type { TasksInterface } from "@/stores/tasks";
-import { useTasksStore } from "@/stores/tasks";
 import SelectInput from "@/components/form/SelectInput.vue";
 import type { PrioritiesInterface } from "@/stores/priorities";
 import { usePrioritiesStore } from "@/stores/priorities";
@@ -145,21 +144,17 @@ import SmallButton from "@/components/buttons/SmallButton.vue";
 import ToolTip from "@/components/ToolTip.vue";
 import CommentsComponent from "@/components/CommentsComponent.vue";
 import { useRoute } from "vue-router";
+import type { Task } from "@/models/Task";
 
-interface Props {
-  id: string | number;
-}
+defineProps<{
+  task: Task;
+}>();
 
-const tasksStore: TasksInterface = useTasksStore();
 const prioritiesStore: PrioritiesInterface = usePrioritiesStore();
 const usersStore: UsersInterface = useUsersStore();
 const projectsStore: ProjectsStoreInterface = useProjectsStore();
-const props = defineProps<Props>();
 const route = useRoute();
 
-const task = tasksStore.getTaskById(
-  typeof props.id === "string" ? parseInt(props.id) : props.id
-);
 const editMode = ref<boolean>(route.hash === "#edit");
 if (route.hash === "#edit") {
   window.location.hash = "";

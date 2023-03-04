@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <nav class="navbar">
+    <nav class="navbar" v-if="$route.name !== 'login'">
       <router-link class="navbar__link" :to="{ name: 'tasks-list' }">
         All Tasks
       </router-link>
