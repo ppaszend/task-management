@@ -39,7 +39,7 @@
 import Box from "../Box.vue";
 import {computed, defineEmits, defineProps, onMounted, onUnmounted, ref} from "vue";
 
-import FadeTransition from "../../../transitions/FadeTransition.vue";
+import FadeTransition from "../../transitions/FadeTransition.vue";
 import useWindowWidth from "../../../composables/windowWidth";
 import {useRouter} from "vue-router";
 

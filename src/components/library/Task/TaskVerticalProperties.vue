@@ -45,7 +45,7 @@ import IconButton from "../Button/IconButton.vue";
 import Box from "../Box.vue";
 import ButtonComponent from "../Button/ButtonComponent.vue";
 import DotIndicator from "../DotIndicator.vue";
-import FadeTransition from "../../../transitions/FadeTransition.vue";
+import FadeTransition from "../../transitions/FadeTransition.vue";
 
 const props = defineProps<{
   name: string,

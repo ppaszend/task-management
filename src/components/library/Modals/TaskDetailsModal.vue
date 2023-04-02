@@ -20,7 +20,7 @@
 import {watch} from "vue";
 import TaskInterface from "../../../interface/Task";
 import {useWindowStore} from "../../../store/Window";
-import FadeTransition from "../../../transitions/FadeTransition.vue";
+import FadeTransition from "../../transitions/FadeTransition.vue";
 import TaskDetails from "../Task/TaskDetails.vue";
 import IconButton from "../Button/IconButton.vue";
 

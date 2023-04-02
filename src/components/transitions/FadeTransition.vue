@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits } from 'vue';
+import {defineEmits} from 'vue';
 
 const { duration } = withDefaults(defineProps<{
   duration?: string;
