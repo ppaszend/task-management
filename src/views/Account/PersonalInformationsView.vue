@@ -1,5 +1,5 @@
 <template>
-<UserProfileCompact :name="userStore.data.name" :email="userStore.data.email" :avatar="userStore.data.avatar" />
+<UserProfileCompact :user="userStore.data" />
 
 <ListLayout gap="24">
   <ListLayout direction="horizontal">

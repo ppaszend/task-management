@@ -2,7 +2,7 @@
   <DropdownMenu @close="activeTab = 'default'" width="400px" :gap="28" arrow>
     <template #button>
       <UserProfileCompact
-        v-bind="userStore.data"
+        :user="userStore.data"
         :status="userStore.activityStatus"
       />
     </template>

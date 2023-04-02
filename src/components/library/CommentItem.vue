@@ -1,17 +1,17 @@
 <template>
 <div class="comment">
   <div class="comment__title">
-    <span>{{ title }}</span>
+    <span>{{ comment.title }}</span>
 
     <IconButton size="sm" icon="notifications_off" />
   </div>
 
   <div class="comment__content">
-    {{ $truncate(content, 160) }}
+    {{ $truncate(comment.content, 160) }}
   </div>
 
   <div class="comment__details">
-    {{ author }} @ yesterday 12:51
+    {{ comment.author }} @ yesterday 12:51
   </div>
 
 </div>
@@ -22,7 +22,9 @@ import { defineProps } from "vue";
 import IconButton from "./Button/IconButton.vue";
 import {CommentInterface} from "../../interface/Comment";
 
-defineProps<CommentInterface>();
+defineProps<{
+  comment: CommentInterface
+}>();
 </script>
 <script lang="ts">
 export default {

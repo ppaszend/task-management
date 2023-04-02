@@ -68,7 +68,7 @@
                   :style="{ gap: '12px' }"
                 >
                   <template v-for="(comment, index) in comments">
-                    <CommentItem v-bind="comment"/>
+                    <CommentItem :comment="comment"/>
 
                     <LineSeparator v-if="index < comments.length - 1" />
                   </template>

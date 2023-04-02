@@ -1,14 +1,14 @@
 <template>
 <div class="userProfileCompact">
   <img
-    v-if="avatar"
-    :src="avatar"
+    v-if="user.avatar"
+    :src="user.avatar"
     class="userProfileCompact__avatar"
     alt=""
   />
 
   <IconButton
-    v-if="!avatar"
+    v-if="!user.avatar"
     size="xl"
     icon="person"
   />
@@ -16,14 +16,14 @@
   <div class="userProfileCompact__group">
     <div class="userProfileCompact__name">
       <span>
-        {{ name }}
+        {{ user.name }}
       </span>
 
       <DotIndicator :color="userStore.activeStatus.indicator.color" />
     </div>
 
     <div class="userProfileCompact__email">
-      {{ email }}
+      {{ user.email }}
     </div>
   </div>
 </div>
@@ -39,7 +39,9 @@ import DotIndicator from "../../DotIndicator.vue";
 
 const userStore = useUserStore();
 
-defineProps<UserData>();
+defineProps<{
+  user: UserData
+}>();
 </script>
 <script lang="ts">
 export default {

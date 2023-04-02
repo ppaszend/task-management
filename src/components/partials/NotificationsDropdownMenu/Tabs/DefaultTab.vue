@@ -11,7 +11,7 @@
   <div>
     <ListLayout :style="{ padding: '16px', gap: '14px', maxHeight: '400px', overflowY: 'scroll' }">
       <template v-for="(notification, index) in notificationsStore.data">
-        <CommentItem v-bind="notification" />
+        <CommentItem :comment="notification" />
 
         <LineSeparator v-if="index < notificationsStore.data.length - 1" />
       </template>
