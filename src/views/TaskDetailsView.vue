@@ -1,24 +1,31 @@
 <template>
-  <task-details :task="task" />
+  <div class="taskDetailsView">
+    <TaskDetails :task="task">
+    </TaskDetails>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import TaskDetails from "@/components/TaskDetails.vue";
-import { useTasksStore } from "@/stores/tasks";
-import type { Task } from "@/models/Task";
+import TaskDetails from "../components/library/Task/TaskDetails.vue";
+import { getTaskById } from "../mocks/TaskListMock";
+import {useRoute} from "vue-router";
 
-interface Props {
-  id: string;
-}
-const props = defineProps<Props>();
-const tasksStore = useTasksStore();
+const route = useRoute();
 
-const task: Task | undefined = tasksStore.getTaskById(parseInt(props.id));
+const task = getTaskById(parseInt(route.params.id[0]));
 </script>
 <script lang="ts">
+
 export default {
   name: "TaskDetailsView",
-};
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.taskDetailsView {
+  width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+  padding-bottom: 24px;
+}
+</style>

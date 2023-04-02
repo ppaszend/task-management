@@ -1,38 +1,34 @@
 <template>
-  <Transition name="fade">
+  <Transition @enter="$emit('enter')" @leave="$emit('leave')" @after-leave="$emit('afterLeave')">
     <slot />
   </Transition>
 </template>
 
 <script lang="ts" setup>
-import { computed } from "vue";
+import { defineEmits } from 'vue';
 
-interface Props {
-  fadeEnterTime?: number | string;
-  fadeLeaveTime?: number | string;
-}
+const { duration } = withDefaults(defineProps<{
+  duration?: string;
+}>(), {
+  duration: '300ms',
+});
 
-const props = defineProps<Props>();
-
-const fadeEnterTime = computed(() => `${props.fadeEnterTime || 300}ms`);
-const fadeLeaveTime = computed(() => `${props.fadeLeaveTime || 300}ms`);
+defineEmits(['enter', 'leave', 'afterLeave']);
 </script>
 <script lang="ts">
 export default {
-  name: "fadeTransition",
-};
+  name: "FadeTransition"
+}
 </script>
 
-<style lang="scss" scoped>
-.fade-enter-active {
-  transition: opacity v-bind("fadeEnterTime") ease;
-}
-.fade-leave-active {
-  transition: opacity v-bind("fadeLeaveTime") ease;
+<style>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity v-bind(duration) ease;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.v-enter-from,
+.v-leave-to {
   opacity: 0;
 }
 </style>
