@@ -33,7 +33,6 @@ import {ref} from "vue";
 
 import {UserData} from "../../interface/User";
 import {useUserStore} from "../../store/User";
-import BoxWithSidebar from "../../components/library/Layouts/BoxWithSidebar.vue";
 import UserProfileCompact from "../../components/library/Utils/User/UserProfileCompact.vue";
 import ListLayout from "../../components/library/ListLayout.vue";
 import InputText from "../../components/library/Form/InputText.vue";

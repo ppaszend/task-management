@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
 import TaskDetails from "../components/library/Task/TaskDetails.vue";
-import { getTaskById } from "../mocks/TaskListMock";
+import {getTaskById} from "../mocks/TaskListMock";
 import {useRoute} from "vue-router";
 
 const route = useRoute();

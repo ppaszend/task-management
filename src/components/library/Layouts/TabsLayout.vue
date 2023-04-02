@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineProps } from 'vue';
+import {defineProps, ref} from 'vue';
 import ButtonComponent from "../Button/ButtonComponent.vue";
 
 defineProps<{

@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import {ref} from "vue";
 import {CommentInterface} from "../interface/Comment";
 import commentsMock from "../mocks/CommentsMock";

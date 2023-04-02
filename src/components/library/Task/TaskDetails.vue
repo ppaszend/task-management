@@ -138,7 +138,6 @@ import InputRichText from "../Form/InputRichText.vue";
 import TabsLayout from "../Layouts/TabsLayout.vue";
 import CommentItem from "../CommentItem.vue";
 import LineSeparator from "../Utils/LineSeparator.vue";
-import IconButton from "../Button/IconButton.vue";
 import InputSelect from "../Form/InputSelect.vue";
 
 const props = defineProps<{

@@ -43,9 +43,9 @@ import {computed, defineProps, ref} from 'vue';
 
 import DotIndicator from "../DotIndicator.vue";
 import IconButton from "../Button/IconButton.vue";
-import ButtonComponent from "../Button/ButtonComponent.vue";
+import ButtonComponent from "@/components/library/Button/ButtonComponent.vue";
 import Box from "../Box.vue";
-import FadeTransition from "../../../transitions/FadeTransition.vue";
+import FadeTransition from "@/transitions/FadeTransition.vue";
 
 const props = withDefaults(defineProps<{
   modelValue: string;

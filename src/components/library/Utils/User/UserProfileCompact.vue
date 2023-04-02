@@ -30,9 +30,9 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
-import { useUserStore } from "../../../../store/User";
-import { UserData } from "../../../../interface/User";
+import {defineProps} from 'vue';
+import {useUserStore} from "../../../../store/User";
+import {UserData} from "../../../../interface/User";
 
 import IconButton from "../../Button/IconButton.vue";
 import DotIndicator from "../../DotIndicator.vue";

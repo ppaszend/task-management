@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import {defineProps, defineEmits, ref, computed} from 'vue';
+import {computed, defineEmits, defineProps, ref} from 'vue';
 
 import ListLayout from "../../../../components/library/ListLayout.vue";
 import TaskVerticalProperties from "../../../../components/library/Task/TaskVerticalProperties.vue";

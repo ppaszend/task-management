@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, defineProps, defineEmits, ref} from 'vue';
+import {computed, defineEmits, defineProps, ref} from 'vue';
 import IconButton from "../Button/IconButton.vue";
 import Box from "../Box.vue";
 import ButtonComponent from "../Button/ButtonComponent.vue";

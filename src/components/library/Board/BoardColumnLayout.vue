@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue';
+import {defineProps} from 'vue';
 import MaterialDesignIcon from "../Utils/MaterialDesignIcon.vue";
 
 defineProps<{

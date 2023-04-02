@@ -68,7 +68,6 @@ import DropdownMenu from "../Utils/DropdownMenu.vue";
 import ButtonComponent from "../Button/ButtonComponent.vue";
 import TaskDetailsModal from "../Modals/TaskDetailsModal.vue";
 import TaskInterface from "../../../interface/Task";
-import {CommentInterface} from "../../../interface/Comment";
 
 const props = withDefaults(defineProps<{
   task: TaskInterface,

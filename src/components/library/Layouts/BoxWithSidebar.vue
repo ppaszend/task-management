@@ -20,9 +20,7 @@
 
 <script lang="ts" setup>
 import Box from "../../../components/library/Box.vue";
-import ListLayout from "../../../components/library/ListLayout.vue";
-
-</script>
+import ListLayout from "../../../components/library/ListLayout.vue";</script>
 <script lang="ts">
 export default {
   name: "BoxWithSidebar"

@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import {defineProps, defineEmits, defineExpose, ref} from 'vue';
+import {defineEmits, defineExpose, defineProps, ref} from 'vue';
 
 withDefaults(defineProps<{
   tag?: 'router-link' | 'button';

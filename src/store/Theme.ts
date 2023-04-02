@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import {defineStore} from 'pinia';
 import {computed, ref, watch} from "vue";
 import {Theme} from "../interface/Theme";
 

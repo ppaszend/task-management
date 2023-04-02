@@ -61,7 +61,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits } from 'vue';
+import {defineEmits, defineProps} from 'vue';
 
 import ListLayout from "../../library/ListLayout.vue";
 import IconButton from "../Button/IconButton.vue";

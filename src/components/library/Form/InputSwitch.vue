@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits, withDefaults } from 'vue';
+import {defineEmits, defineProps, withDefaults} from 'vue';
 
 withDefaults(defineProps<{
   modelValue?: boolean;

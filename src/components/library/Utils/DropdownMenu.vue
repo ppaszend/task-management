@@ -37,7 +37,7 @@
 
 <script lang="ts" setup>
 import Box from "../Box.vue";
-import {ref, defineProps, defineEmits, computed, onMounted, onUnmounted} from "vue";
+import {computed, defineEmits, defineProps, onMounted, onUnmounted, ref} from "vue";
 
 import FadeTransition from "../../../transitions/FadeTransition.vue";
 import useWindowWidth from "../../../composables/windowWidth";

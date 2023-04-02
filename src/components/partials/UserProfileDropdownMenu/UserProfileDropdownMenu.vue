@@ -20,14 +20,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useUserStore } from "../../../store/User";
+import {ref} from 'vue';
+import {useUserStore} from "../../../store/User";
 
 import DropdownMenu from "../../library/Utils/DropdownMenu.vue";
 import UserProfileCompact from "../../library/Utils/User/UserProfileCompact.vue";
 import DefaultTab from "./Tabs/DefaultTab.vue";
 import ThemeTab from "./Tabs/ThemeTab.vue";
-import {useRouter} from "vue-router";
 
 const userStore = useUserStore();
 

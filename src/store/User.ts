@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import {computed, ref} from "vue";
 import {Status, UserData} from "../interface/User";
 import {useRouter} from "vue-router";

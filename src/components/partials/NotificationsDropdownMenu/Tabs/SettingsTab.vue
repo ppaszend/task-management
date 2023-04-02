@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, ref } from "vue";
+import {defineEmits, ref} from "vue";
 
 import HeaderLayout from "../../../library/Layouts/HeaderLayout.vue";
 import InputSwitch from "../../../../components/library/Form/InputSwitch.vue";

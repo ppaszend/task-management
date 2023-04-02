@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits } from 'vue';
+import {defineEmits} from 'vue';
 
 import ListLayout from "../../../library/ListLayout.vue";
 import ButtonComponent from "../../../library/Button/ButtonComponent.vue";

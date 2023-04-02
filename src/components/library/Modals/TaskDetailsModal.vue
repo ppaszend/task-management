@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { watch } from "vue";
+import {watch} from "vue";
 import TaskInterface from "../../../interface/Task";
 import {useWindowStore} from "../../../store/Window";
 import FadeTransition from "../../../transitions/FadeTransition.vue";

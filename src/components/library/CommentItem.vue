@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from "vue";
+import {defineProps} from "vue";
 import IconButton from "./Button/IconButton.vue";
 import {CommentInterface} from "../../interface/Comment";
 

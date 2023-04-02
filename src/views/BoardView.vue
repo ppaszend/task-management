@@ -42,7 +42,6 @@
 
 <script lang="ts" setup>
 import BoardTask from "../components/library/Board/BoardTask.vue";
-import TaskListMock from "../mocks/TaskListMock";
 import BoardColumnLayout from "../components/library/Board/BoardColumnLayout.vue";
 import BoardMock from "../mocks/BoardMock";
 import ButtonComponent from "../components/library/Button/ButtonComponent.vue";
